@@ -1,0 +1,74 @@
+<!doctype html>
+<html>
+
+   <head>
+      <meta charset="utf-8">
+      <title>내 공간</title>
+      <style>
+         h1 {
+            background-color: cornflowerblue;
+            text-align: center;
+            font-family: Georgia, 'Times New Roman', Times, serif;
+            padding : 20px 0 20px 0;
+            height: 40px;
+            margin: 0;
+         }
+
+         #grid1{
+            margin-left: 15%;
+            margin-right: 15%;
+         }
+         #grid2{
+            display: grid;
+            grid-template-columns: 200px 1fr;
+         }
+         
+         .table {
+            background-color: rgb(222, 236, 232);
+            border: 10px;
+            padding: 10px;
+            margin: 5px;
+        }
+
+         #flex {
+            display: flex;
+            flex-direction: column;
+            float: right;
+         }
+         
+      </style>
+   </head>
+   
+   <body>
+      <h1>내 공간</h1>
+      <div id="grid1">
+         <h2 display="inline">내가 좋아하는 책</h2>
+         <div>
+            <img src="stranger2.jpg" alt="알베르 카뮈_이방인" width="45%">
+            <img src="stranger3.jpeg" alt="알베르 카뮈_이방인" width="45%">
+         </div>
+         <div id="grid2">
+            <div><img src="stranger.png" alt="알베르 카뮈_이방인" width="100%"></div>
+            <div id="cont">알베르 카뮈_이방인</div>
+         </div>
+         <div style="display:grid; grid-template-columns: 1fr 1fr 1fr; grid-template-rows: 1fr 1fr;"> 
+            <div style="background-color: rgb(238, 136, 136);">제목</div>
+            <div style="background-color: rgb(243, 182, 141);">저자</div>
+            <div style="background-color: rgb(230, 223, 126);">국가</div>
+            <div style="background-color: rgb(140, 235, 131);">이방인</div>
+            <div style="background-color: rgb(126, 151, 235);">알베르 카뮈</div>
+            <div style="background-color: rgb(161, 184, 228);">프랑스</div>
+         </div><br>
+
+         <div id="flex">
+            <div><h3 class="table">내 소개</h3> </div>  
+            <div style="display:grid; grid-template-columns: 1fr 1fr; grid-template-rows: 1fr 1fr;">
+               <div style="background-color: rgb(226, 110, 43);flex-basis:20px;">이름</div>
+               <div style="background-color: rgb(198, 231, 154);flex-basis:30px;;">김대연</div>
+               <div style="background-color: rgb(98, 161, 243);flex-basis:20px;">국적</div>
+               <div style="background-color: rgb(226, 84, 162);flex-basis:30px;;">대한민국</div>
+            </div>
+         </div>
+      </div>
+   </body>
+</html>
