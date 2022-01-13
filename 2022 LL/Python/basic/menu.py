@@ -21,3 +21,8 @@ while True:
         break
     else:
         print("올바른 번호를 입력해주세요.")
+
+
+
+
+note = ["주원","나원","민솔"]
