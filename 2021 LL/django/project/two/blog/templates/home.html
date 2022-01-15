@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block title %}
+<title>홈</title>
+{% endblock title %}
+    
+
+{% if user.is_authenticated %}
+    {{user.username}}
+    {{user.university}}에 다니는 {{user.nickname}}님 안녕하세[요!]
+{% endif %}
+
+{% block content %}
+<h1>Blog Project</h1>
+<img src="{% static 'tonied.jpeg' %}" width="50px">
+<a class="btn btn-primary" href="{% url 'new' %}" role="button">새 글 작성하기</a>
+
+{% for blog in blogs  %}
+    <h3>{{blog.title}}</h3>
+    <h4>{{blog.writer}}</h4>
+    {{blog.summary}} <a href="{% url 'detail' blog.id %}">...더보기</a>      
+{% endfor %}
+
+
+{% if blogs.has_previous %}
+    <a href="?page=1">처음</a>
+    <a href="?page={{blogs.previous_page_number">이전</a>
+{% endif %}
+<span>{{blogs.number}}</span>
+<span>of</span>
+<span>{{blogs.paginator.num_pages}}</span>
+
+
+{% if blogs.has_next %}
+<a href="?page={{blogs.next_page_number}}">다음</a>
+<a href="?page={{blogs.paginator.num_pages}}">마지막</a>    
+{% endif %}
+    
+    
+
+{% endblock content %}

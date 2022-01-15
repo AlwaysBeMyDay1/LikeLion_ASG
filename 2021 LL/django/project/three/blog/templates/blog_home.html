@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+
+{% block title %}
+    <title>블로그</title>
+{% endblock title %}
+
+
+{% block content %}
+    <h1>Blog Project</h1>
+    <a class="btn btn-primary" href="{% url 'blog:new' %}" role="button">새 글 작성하기</a>
+    
+    {% for blog in blogs  %}
+        <h3>{{blog.title}}</h3>
+        <h4>{{blog.writer}}</h4>
+        {{blog.summary}} <a href="{% url 'blog:detail' blog.id %}">...더보기</a> 
+        {%endfor%}
+{% endblock content %}

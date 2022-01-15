@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+
+{% block title %}
+    새로운 블로그
+{% endblock title %}
+    
+
+{% block content %}
+<h1>New Blog</h1>
+<form action="{% url 'blog:create' %}" method="POST">
+    {% csrf_token %}
+    제목 : <input type="text" name="title">
+    <br>
+    작성자 : <input type="text" name="writer">
+    <br>
+    본문 : <textarea name="body" cols="10" rows="3"></textarea> 
+    <input type="submit" value="작성">
+</form>
+{% endblock content %}
