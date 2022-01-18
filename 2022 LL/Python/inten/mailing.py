@@ -4,9 +4,20 @@ from email.message import EmailMessage
 import imghdr
 import re
 
-
 SMTP_SERVER = "smtp.gmail.com"
 SMTP_PORT = 465
+
+def sendEmail(addr):
+    #정규 표현식 사용
+    reg = "^[a-zA-Z0-9.+_-]+@[a-zA-Z0-9]+\.[a-zA-Z]{2,3}$"
+    np = re.match(reg,addr)
+    if bool(np) :
+        # 메일 보내기
+        smtp.send_message(message)
+        print("정상적으로 메일이 발송되었습니다.")
+    else :
+        print("메일 주소를 다시 확인해주세요.")
+
 
 #MIME type 이메일 만들기
 # 이메일 담을 통 만들기
@@ -28,17 +39,11 @@ with open("gandalf_with_macbook.jpg","rb") as img :
     img_file = img.read()
 
 img_type = imghdr.what("gandalf_with_macbook",img_file)
-message.add_attachment(img_file,maintype='image',subtype='')
+message.add_attachment(img_file,maintype='image',subtype=img_type)
 
 # smtp 메일 서버 연결
 smtp = smtplib.SMTP_SSL(SMTP_SERVER,SMTP_PORT)
-
 # smtp 서버에 로그인
-print(smtp.login("eodus0901@gmail.com","start2020!"))
-
-#정규 표현식 사용
-reg = "^[a-zA-Z0-9.+_-]+@[a-zA-Z0-9]+\.[a-zA-Z]{2,3}$"
-re.match(reg,"")
-# 메일 보내기
-smtp.send_message(message)
+smtp.login("eodus0901@gmail.com","start2020!")
+sendEmail("eodus09011@naver.com")
 smtp.quit()
