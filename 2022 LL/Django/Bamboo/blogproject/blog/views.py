@@ -2,7 +2,7 @@ import re
 from django.shortcuts import render, redirect
 from .models import Blog
 from django.utils import timezone
-from .forms import BlogForm
+from .forms import BlogForm, BlogModelForm
 
 def home(req) :
     return render(req, "index.html")
@@ -33,4 +33,11 @@ def djangoform(req):
     return render(req, "djangoform.html",{'form':form})
 
 def modelform(req):
-    return redirect('home')
+    if req.method=='POST':
+        form = BlogModelForm(req.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('home')
+    else:
+        form = BlogModelForm()
+    return render(req, "modelform.html",{'form':form})

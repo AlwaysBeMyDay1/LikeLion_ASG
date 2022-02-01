@@ -1,0 +1,9 @@
+<h1>django model form으로 사용자 입력받기</h1>
+
+<form action="{% url 'modelform' %}" method="POST">
+    {%csrf_token%}
+    <table>
+        {{form.as_table}}
+    </table>
+    <input type="submit" value="django model form으로 글 생성하기">
+</form>
