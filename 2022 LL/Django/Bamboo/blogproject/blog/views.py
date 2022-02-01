@@ -1,5 +1,5 @@
 import re
-from django.shortcuts import render, redirect
+from django.shortcuts import get_object_or_404, render, redirect
 from .models import Blog
 from django.utils import timezone
 from .forms import BlogForm, BlogModelForm
@@ -43,3 +43,9 @@ def modelform(req):
     else:
         form = BlogModelForm()
     return render(req, "modelform.html",{'form':form})
+
+def detail(req, blog_id):
+    # blog_id 번째 블로그 글을 데이터베이스로부터 가져와서
+    blog_detail=get_object_or_404(Blog,pk=blog_id)
+    # blog_id 번째 블로그 글을 detail.html로 띄워주는 코드
+    return render(req,"detail.html", {'blog_detail':blog_detail})
