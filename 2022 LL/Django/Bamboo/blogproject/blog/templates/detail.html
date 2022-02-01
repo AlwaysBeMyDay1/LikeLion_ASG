@@ -4,3 +4,10 @@
 {{blog_detail.date}}
 <h3>본문</h3>
 {{blog_detail.body}}
+
+{% if blog_detail.photo %}
+    <h3>그림</h3>
+    {{blog_detail.photo}}
+    <br>
+    <img src="{{blog_detail.photo.url}}" alt="" height="200">
+{% endif %}
