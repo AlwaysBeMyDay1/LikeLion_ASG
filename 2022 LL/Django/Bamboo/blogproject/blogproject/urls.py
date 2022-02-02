@@ -28,6 +28,7 @@ urlpatterns = [
     path("djangoform/", views.djangoform, name="djangoform"),
     path("modelform/", views.modelform, name="modelform"),
 
-    path('detail/<int:blog_id>', views.detail, name="detail")
+    path('detail/<int:blog_id>', views.detail, name="detail"),
+    path('commentform/<int:blog_id>', views.commentform, name="commentform")
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -1,8 +1,9 @@
+from pickle import FALSE
 import re
 from django.shortcuts import get_object_or_404, render, redirect
 from .models import Blog
 from django.utils import timezone
-from .forms import BlogForm, BlogModelForm
+from .forms import BlogForm, BlogModelForm, CommentForm
 
 def home(req) :
     # posts = Blog.objects.all()
@@ -47,5 +48,15 @@ def modelform(req):
 def detail(req, blog_id):
     # blog_id 번째 블로그 글을 데이터베이스로부터 가져와서
     blog_detail=get_object_or_404(Blog,pk=blog_id)
+    comment_form = CommentForm()
     # blog_id 번째 블로그 글을 detail.html로 띄워주는 코드
-    return render(req,"detail.html", {'blog_detail':blog_detail})
+    return render(req,"detail.html", {'blog_detail':blog_detail, 'comment_form':comment_form})
+
+def commentform(req, blog_id):
+    filled_form = CommentForm(req.POST)
+    
+    if filled_form.is_valid():
+        finished_form = filled_form.save(commit=False)
+        finished_form.post = get_object_or_404(Blog, pk=blog_id)
+        finished_form.save()
+    return redirect('detail', blog_id)

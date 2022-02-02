@@ -1,6 +1,6 @@
 import imp
 from django import forms
-from .models import Blog
+from .models import Blog, Comment
 
 class BlogForm(forms.Form):
     title = forms.CharField()
@@ -11,3 +11,8 @@ class BlogModelForm(forms.ModelForm):
         model = Blog
         fields = '__all__' #<---- 모든 필드 
         # fields = ['title','body']
+
+class CommentForm(forms.ModelForm):
+    class Meta:
+        model = Comment
+        fields = ['comment']
