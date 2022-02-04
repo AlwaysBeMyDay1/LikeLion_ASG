@@ -20,3 +20,7 @@ for index, menu  in enumerate(menus) :
     print(doc)
 
 
+file = open("NaverMenu.txt","w",encoding="UTF-8")
+
+for menu in menus:
+	file.write(menu.get_text()+"\n")
